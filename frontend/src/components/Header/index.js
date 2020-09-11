@@ -1,13 +1,15 @@
-import React from 'react';
-//import { withRouter } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   head: {
@@ -17,28 +19,40 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   title: {
-    flexGrow: 1,
+    [theme.breakpoints.down("sm")]: {
+      flexGrow: 1,
+    },
   },
   img: {
-    width:'2rem',
-    height: '2rem',
-    marginRight: theme.spacing(3)
-}
+    width: "2rem",
+    height: "2rem",
+    marginRight: theme.spacing(1),
+  },
+  bar: {
+    display: "flex",
+    flexGrow: 1,
+    justifyContent: "space-evenly",
+  },
 }));
 
-const Header = () => {
+const Header = (props) => {
+  const navigate = useNavigate();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleMenuClick = (pageURL) => {
+    navigate(pageURL);
     setAnchorEl(null);
   };
 
@@ -46,45 +60,86 @@ const Header = () => {
     <div className={classes.root}>
       <AppBar position="sticky" className={classes.head}>
         <Toolbar>
-          <img className={classes.img}src="images/mushroom.png" alt="icon" ></img>
-          <Typography variant="h6" className={classes.title}>
-            Mushrooming
-          </Typography>
-            <div>
-            <IconButton 
-            edge="start" 
-            className={classes.menuButton} 
-            color="inherit" 
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
             aria-label="menu"
-            onClick = {handleMenu}>
-            <MenuIcon>
-
-            </MenuIcon>
+          >
+            <img
+              className={classes.img}
+              src="images/mushroom.png"
+              alt="icon"
+              onClick={() => handleMenuClick("/")}
+            ></img>
           </IconButton>
+          <Typography variant="h6" className={classes.title}>Mushrooming</Typography>
+          {isMobile ? (
+            <div>
+              <IconButton
+                edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+                onClick={handleMenu}
+              >
+                <MenuIcon></MenuIcon>
+              </IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={open}
-                onClose={handleClose}
+                onClose={() => setAnchorEl(null)}
               >
-                <MenuItem onClick={handleClose}>Atlas Grzybów</MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/atlas")}>
+                  Atlas grzybów
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/identyfikacja")}>
+                  Identyfikacja grzybów
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/mapa")}>
+                  Mapa występowania
+                </MenuItem>
               </Menu>
             </div>
+          ) : (
+            <div className={classes.bar}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => handleMenuClick("/atlas")}
+              >
+                Atlas grzybów
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => handleMenuClick("/identyfikacja")}
+              >
+                Identyfikacja grzybów
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => handleMenuClick("/mapa")}
+              >
+                Mapa występowania
+              </Button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
 
-//export default withRouter(Header);
 export default Header;
-

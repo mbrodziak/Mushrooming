@@ -1,7 +1,7 @@
 import React from "react";
 
 const Map = () => {
-  return <div>Tu będzie mapa występowania</div>;
+  return <h3>Tu będzie mapa występowania</h3>;
 };
 
 export default Map;

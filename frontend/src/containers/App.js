@@ -1,9 +1,9 @@
   import React from 'react';
   import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-  import Home from "../Home";
-  import Atlas from "../Atlas";
-  import Borowiki from "../Borowiki";
-  import Map from "../Map";
+  import Home from "./Home";
+  import Atlas from "./Atlas";
+  import Map from "./Map";
+  import Identify from "./Identify";
   import Header from '../components/Header/'
 
   import './App.css';
@@ -15,9 +15,8 @@
         <Header/>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/atlas" element={<Atlas/>} >
-            <Route path="/borowiki" element={<Borowiki/>} />
-          </Route>
+          <Route path="/atlas" element={<Atlas/>} />
+          <Route path="/identyfikacja" element={<Identify/>} />
           <Route path="/mapa" element={<Map/>} />
           
         </Routes>

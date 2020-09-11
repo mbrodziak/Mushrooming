@@ -2,7 +2,6 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Bupload from './components/Bupload'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
       '@media (min-width:600px)': { fontSize: '1.3rem'},
       [theme.breakpoints.up('md')]: {fontSize: '1.5rem'},
       fontStyle: 'oblique',
+
     },
   }));
   
@@ -30,10 +30,10 @@ const Home = () => {
         <Box color ='white'>
           <Typography 
           className={classes.text}
-          variant="body1">
+          variant="body1"
+          align="center">
             Mushrooming to nowoczesny internetowy atlas grzybów wykorzystujący sztuczną inteligencję. Umożliwia on przeglądanie i wyszukiwanie rozmaitych gatunków grzybów oraz ich identyfikajcę z przesyłanych zdjęć.
           </Typography>
-          <Bupload/>
         </Box>
       </Grid>
     </Grid>
