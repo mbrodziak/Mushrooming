@@ -1,30 +1,27 @@
-import React from 'react';
-import './App.css';
-import Header from '../components/Header/'
-import Inside from '../components/Inside'
-import Bupload from '../components/Bupload'
-import Grid from '@material-ui/core/Grid';
-import 'fontsource-roboto';
+  import React from 'react';
+  import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+  import Home from "./Home";
+  import Atlas from "./Atlas";
+  import Map from "./Map";
+  import Identify from "./Identify";
+  import Header from '../components/Header/'
 
-const App = () => {
-  return (
-    <div className="App">
-      <Header />
-      <Grid
-        container
-        spacing={1}
-        direction="column"
-        alignItems="center"
-        justify="center"
-        text-align="center"
-        style={{ minHeight: "100vh" }}>
-        <Grid item xs={8}>
-          <Inside/>
-          <Bupload/>
-        </Grid>
-      </Grid>
-    </div>
-  );
-}
+  import './App.css';
+  import 'fontsource-roboto';
 
-export default App;
+  const App = () => {
+    return (
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/atlas" element={<Atlas/>} />
+          <Route path="/identyfikacja" element={<Identify/>} />
+          <Route path="/mapa" element={<Map/>} />
+          
+        </Routes>
+      </Router>
+    );
+  }
+
+  export default App;
