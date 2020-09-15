@@ -6,5 +6,3 @@ class MushroomSerializers(serializers.ModelSerializer):
     class Meta:
         model = Mushroom
         fields = ('id', 'name', 'latin_name', 'application', 'photo')
-
-
