@@ -18,7 +18,6 @@
           <Route path="/atlas" element={<Atlas/>} />
           <Route path="/identyfikacja" element={<Identify/>} />
           <Route path="/mapa" element={<Map/>} />
-          
         </Routes>
       </Router>
     );
