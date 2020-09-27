@@ -56,6 +56,21 @@ const Header = (props) => {
     setAnchorEl(null);
   };
 
+  const menuItems = [
+    {
+      title: 'Atlas Grzybów',
+      url: '/atlas'
+    },
+    {
+      title: 'Identyfikacja Grzybów',
+      url: '/identyfikacja'
+    },
+    {
+      title: 'Mapa występowania',
+      url: '/mapa'
+    }
+  ]
+
   return (
     <div className={classes.root}>
       <AppBar position="sticky" className={classes.head}>
@@ -100,40 +115,24 @@ const Header = (props) => {
                 open={open}
                 onClose={() => setAnchorEl(null)}
               >
-                <MenuItem onClick={() => handleMenuClick("/atlas")}>
-                  Atlas grzybów
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/identyfikacja")}>
-                  Identyfikacja grzybów
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/mapa")}>
-                  Mapa występowania
-                </MenuItem>
+                {menuItems.map(mItem => {
+                  const {title, url} = mItem;
+                  return <MenuItem onClick={() => handleMenuClick(url)}>{title}</MenuItem>
+                  })
+                }
               </Menu>
             </div>
           ) : (
             <div className={classes.bar}>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={() => handleMenuClick("/atlas")}
-              >
-                Atlas grzybów
-              </Button>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={() => handleMenuClick("/identyfikacja")}
-              >
-                Identyfikacja grzybów
-              </Button>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={() => handleMenuClick("/mapa")}
-              >
-                Mapa występowania
-              </Button>
+              {menuItems.map(mItem => {
+                const {title, url} = mItem;
+                return <Button
+                  variant='contained'
+                  size='small'
+                  onClick={() => handleMenuClick(url)}>{title}
+                  </Button>
+                })
+              }
             </div>
           )}
         </Toolbar>
