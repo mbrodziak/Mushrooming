@@ -4,6 +4,7 @@
   import Atlas from "./Atlas";
   import Map from "./Map";
   import Identify from "./Identify";
+  import Borowiki from "./Borowiki";
   import Header from '../components/Header/'
 
   import './App.css';
@@ -15,9 +16,10 @@
         <Header/>
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/atlas" element={<Atlas/>} />
-          <Route path="/identyfikacja" element={<Identify/>} />
-          <Route path="/mapa" element={<Map/>} />
+          <Route path="atlas" element={<Atlas/>} />
+          <Route path="atlas/borowiki" element={<Borowiki />} />
+          <Route path="identyfikacja" element={<Identify/>} />
+          <Route path="mapa" element={<Map/>} />
         </Routes>
       </Router>
     );
