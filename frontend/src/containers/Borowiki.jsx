@@ -7,7 +7,7 @@ const Borowiki = () => {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/mushroom/borowik")
+    fetch("http://127.0.0.1:8000/api/mushroom/borowik/")
       .then((response) => response.json())
       .then((json) => {
         setData(json);
