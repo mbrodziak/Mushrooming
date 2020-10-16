@@ -18,7 +18,7 @@ const Borowiki = () => {
 
   return (
     <div>
-    {!loaded && <h4>Błąd: nie załadowano grzybów z bazy danych</h4>}
+    {!loaded && <h4>Wczytywanie...</h4>}
     <Mushroom />
     </div>
   )

@@ -1,7 +1,21 @@
 import React from "react";
+import Search from '../components/Search';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    marginTop: "10rem",
+  }
+}));
 
 const Identify = () => {
-  return <h3>Tu będzie interfejs do identyfikacji grzybów</h3>;
+
+  return (
+  <div>
+      <Search />
+  </div>
+  )
 };
 
 export default Identify;
