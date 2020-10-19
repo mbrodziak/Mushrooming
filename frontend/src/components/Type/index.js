@@ -32,7 +32,7 @@ const Atlas = (props) => {
   
     return (
           <Grid item xs={12} sm={6} md={3}>
-            <Card className={classes.paper} alignItems="center" >
+            <Card className={classes.paper} >
               <CardActionArea onClick={() => handleClick(props.route)}>
                 <CardMedia className={classes.image}
                   component="img"
@@ -46,7 +46,7 @@ const Atlas = (props) => {
                   <Typography gutterBottom variant="h5" component="h2">
                     {props.name}
                   </Typography>
-                  <Typography variant="caption text" color="white" component="p">
+                  <Typography variant="body2" component="p">
                     {props.description}
                   </Typography>
                 </CardContent>

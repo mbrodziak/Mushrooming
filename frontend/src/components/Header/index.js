@@ -80,12 +80,12 @@ const Header = (props) => {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
+            onClick={() => handleMenuClick("/")}
           >
             <img
               className={classes.img}
               src="images/mushroom.png"
               alt="icon"
-              onClick={() => handleMenuClick("/")}
             ></img>
           </IconButton>
           <Typography variant="h6" className={classes.title}>Mushrooming</Typography>
@@ -117,7 +117,7 @@ const Header = (props) => {
               >
                 {menuItems.map(mItem => {
                   const {title, url} = mItem;
-                  return <MenuItem onClick={() => handleMenuClick(url)}>{title}</MenuItem>
+                  return <MenuItem key={url} onClick={() => handleMenuClick(url)}>{title}</MenuItem>
                   })
                 }
               </Menu>
@@ -127,6 +127,7 @@ const Header = (props) => {
               {menuItems.map(mItem => {
                 const {title, url} = mItem;
                 return <Button
+                  key = {url}
                   variant='contained'
                   size='small'
                   onClick={() => handleMenuClick(url)}>{title}
