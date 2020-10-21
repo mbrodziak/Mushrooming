@@ -33,19 +33,19 @@ const Atlas = () => {
           name="Podgrzybki" 
           source="images/podgrzybek.jpg"
           route="podgrzybki"
-          description="Idealnie nadają się do marynowania i suszenia, stanowią też bazę wielu potraw lub świetnie sprawdzają się w roli dodatku, uzupełniającego smak dań."
+          description="Idealnie nadają się do marynowania i suszenia, stanowią też bazę wielu potraw lub świetnie sprawdzają się w roli dodatku, uzupełniającego smak dań"
         />
         <Type 
           name="Maślaki" 
           source="images/maslak.jpg"
           route="maslaki"
-          description="Odróżniają się od innych grzybów charakterystyczną śliską skórką, która pokrywa kapelusz tych grzybów."
+          description="Odróżniają się od innych grzybów charakterystyczną śliską skórką, która pokrywa kapelusz tych grzybów"
         />
         <Type 
           name="Muchomory" 
           source="images/muchomor.jpg"
           route="muchomory"
-          description="To jedne z grzybów które wywołują najwięcej emocji i zaniepokojenia, wśród nich są grzyby śmiertelnie trujące jak i niezwykle smaczne."
+          description="To jedne z grzybów które wywołują najwięcej emocji i zaniepokojenia, wśród nich są grzyby śmiertelnie trujące jak i niezwykle smaczne"
         />
       </Grid>
     </div>
