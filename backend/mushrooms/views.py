@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework import generics
 
 from .models import Mushroom, Borowik, Maslak, Muchomor, Mleczaj, Podgrzybek
-from .serializers import MushroomSerializers
+from .serializers import MushroomSerializers, MushroomFullSerializers
 
 
 # Create your views here.
@@ -41,7 +41,7 @@ def get_mushroom_category_object(request, category, id):
         mushroom_category = Muchomor.objects.filter(id=id)
     elif category == 'podgrzybek':
         mushroom_category = Podgrzybek.objects.filter(id=id)
-    serializer = MushroomSerializers(mushroom_category, many=True)
+    serializer = MushroomFullSerializers(mushroom_category, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
