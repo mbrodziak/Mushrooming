@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 const Borowiki = () => {
   const { data, status } = useQuery("borowiki", fetchBorowiki);
   const classes = useStyles();
-  console.log(data);
 
   return (
     <div>

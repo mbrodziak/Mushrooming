@@ -4,7 +4,7 @@ import Mushroom from "../../components/Mushroom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
-const fetchBorowiki = async () => {
+const fetchPodgrzybki = async () => {
   const res = await fetch("http://127.0.0.1:8000/api/mushroom/podgrzybek/");
   return res.json();
 };
@@ -18,10 +18,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Borowiki = () => {
-  const { data, status } = useQuery("borowiki", fetchBorowiki);
+const Podgrzybki = () => {
+  const { data, status } = useQuery("podgrzybki", fetchPodgrzybki);
   const classes = useStyles();
-  console.log(data);
 
   return (
     <div>
@@ -46,4 +45,4 @@ const Borowiki = () => {
   );
 };
 
-export default Borowiki;
+export default Podgrzybki;
