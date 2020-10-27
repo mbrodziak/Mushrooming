@@ -1,5 +1,5 @@
 import React from "react";
-import Type from '../components/Type'
+import Type from '../../components/Type';
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Atlas = () => {
+const Index = () => {
   const classes = useStyles();
 
   return (
@@ -52,6 +52,4 @@ const Atlas = () => {
   )
 };
 
-export default Atlas
-
-
+export default Index;
