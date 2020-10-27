@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from "@material-ui/core/styles";
+import { useNavigate, useLocation } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -21,12 +22,18 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+  
+
 const Mushroom = ({mushroom}) => {
     const classes = useStyles();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
     return (
         <Grid item xs={12} sm={6} md={3}>
           <Card className={classes.paper} >
-            <CardActionArea >
+            <CardActionArea onClick={() => navigate(location.pathname + '/' + mushroom.id)}>
               <CardMedia className={classes.image}
                 component="img"
                 alt={mushroom.latin_name}
