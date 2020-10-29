@@ -42,7 +42,6 @@ const Mushrooms = () => {
   return (
     <div>
       {status === "error" && <p>Błąd pobierania danych z bazy!</p>}
-      {status === "loading" && <p>Wczytywanie danych...</p>}
       {status === "success" && (
         <div className={classes.root}>
           <Grid
