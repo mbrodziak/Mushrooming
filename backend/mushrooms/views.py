@@ -1,47 +1,22 @@
-from django.http import JsonResponse
-from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import viewsets
+from rest_framework.response import Response
 
-from .models import Mushroom, Borowik, Maslak, Muchomor, Mleczaj, Podgrzybek
+from .models import Mushroom
 from .serializers import MushroomSerializers, MushroomFullSerializers
 
 
 # Create your views here.
 
 
-class MushroomListCreate(generics.ListCreateAPIView):
+class MushroomViewSet(viewsets.ModelViewSet):
     queryset = Mushroom.objects.all()
     serializer_class = MushroomSerializers
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['category']
 
-
-def get_mushroom_category(request, category):
-    mushroom_category = ''
-    if category == 'borowik':
-        mushroom_category = Borowik.objects.all()
-    elif category == 'maslak':
-        mushroom_category = Maslak.objects.all()
-    elif category == 'mleczaj':
-        mushroom_category = Mleczaj.objects.all()
-    elif category == 'muchomor':
-        mushroom_category = Muchomor.objects.all()
-    elif category == 'podgrzybek':
-        mushroom_category = Podgrzybek.objects.all()
-    serializer = MushroomSerializers(mushroom_category, many=True)
-    return JsonResponse(serializer.data, safe=False)
-
-
-def get_mushroom_category_object(request, category, id):
-    mushroom_category = ''
-    if category == 'borowik':
-        mushroom_category = Borowik.objects.filter(id=id)
-    elif category == 'maslak':
-        mushroom_category = Maslak.objects.filter(id=id)
-    elif category == 'mleczaj':
-        mushroom_category = Mleczaj.objects.filter(id=id)
-    elif category == 'muchomor':
-        mushroom_category = Muchomor.objects.filter(id=id)
-    elif category == 'podgrzybek':
-        mushroom_category = Podgrzybek.objects.filter(id=id)
-    serializer = MushroomFullSerializers(mushroom_category, many=True)
-    return JsonResponse(serializer.data, safe=False)
-
+    def retrieve(self, request, *args, **kwargs):
+        mushroom = self.get_object()
+        serializer = MushroomFullSerializers(mushroom)
+        return Response(serializer.data)
 

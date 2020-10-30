@@ -47,6 +47,12 @@ const Index = () => {
           route="muchomory"
           description="To jedne z grzybów które wywołują najwięcej emocji i zaniepokojenia, wśród nich są grzyby śmiertelnie trujące jak i niezwykle smaczne"
         />
+        <Type
+          name="Mleczaje"
+          source="images/mleczaj.jpg"
+          route="mleczaje"
+          description="Niektóre gatunki są jadalne i cenione przez grzybiarzy, niektóre są niejadalne z powodu gorzkiego mleczka, ale i te po odpowiednim przyrządzeniu w niektórych krajach są uważane za smaczne grzyby jadalne"
+        />
       </Grid>
     </div>
   )

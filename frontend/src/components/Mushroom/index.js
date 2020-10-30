@@ -38,7 +38,7 @@ const Mushroom = ({mushroom}) => {
                 component="img"
                 alt={mushroom.latin_name}
                 height="150"
-                image={'http://127.0.0.1:8000' + (mushroom.photo)}
+                image={mushroom.photo}
                 opacity="0.5"
                 title={mushroom.name}
               />

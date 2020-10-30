@@ -7,19 +7,23 @@ import Grid from "@material-ui/core/Grid";
 
 const fetchMushrooms = async (loc) => {
     if(loc.pathname.includes("borowiki")) {
-        const res = await fetch("http://127.0.0.1:8000/api/mushroom/borowik/");
+        const res = await fetch("http://127.0.0.1:8000/mushrooms/?category=borowiki");
         return res.json();
     }
     else if(loc.pathname.includes("podgrzybki")) {
-        const res = await fetch("http://127.0.0.1:8000/api/mushroom/podgrzybek/");
+        const res = await fetch("http://127.0.0.1:8000/mushrooms/?category=podgrzybki");
         return res.json();
     }
     else if(loc.pathname.includes("maslaki")) {
-        const res = await fetch("http://127.0.0.1:8000/api/mushroom/maslak/");
+        const res = await fetch("http://127.0.0.1:8000/mushrooms/?category=maslaki");
         return res.json();
     }
     else if(loc.pathname.includes("muchomory")) {
-        const res = await fetch("http://127.0.0.1:8000/api/mushroom/muchomor/");
+        const res = await fetch("http://127.0.0.1:8000/mushrooms/?category=muchomory");
+        return res.json();
+    }
+    else if(loc.pathname.includes("mleczaje")) {
+        const res = await fetch("http://127.0.0.1:8000/mushrooms/?category=mleczaje");
         return res.json();
     }
     else return null;
