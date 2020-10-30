@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
@@ -12,24 +12,9 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-const fetchDetails = async (id, loc) => {
-  if (loc.pathname.includes("borowiki")) {
-    const res = await fetch(`http://127.0.0.1:8000/api/mushroom/borowik/${id}`);
-    return res.json();
-  } else if (loc.pathname.includes("podgrzybki")) {
-    const res = await fetch(
-      `http://127.0.0.1:8000/api/mushroom/podgrzybek/${id}`
-    );
-    return res.json();
-  } else if (loc.pathname.includes("maslaki")) {
-    const res = await fetch(`http://127.0.0.1:8000/api/mushroom/maslak/${id}`);
-    return res.json();
-  } else if (loc.pathname.includes("muchomory")) {
-    const res = await fetch(
-      `http://127.0.0.1:8000/api/mushroom/muchomor/${id}`
-    );
-    return res.json();
-  } else return null;
+const fetchDetails = async (id) => {
+   const res = await fetch(`http://127.0.0.1:8000/mushrooms/${id}/`);
+   return res.json();
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -61,9 +46,8 @@ const Info = () => {
   const classes = useStyles();
 
   let { id } = useParams();
-  let location = useLocation();
 
-  const { data, status } = useQuery([id, location], fetchDetails);
+  const { data, status } = useQuery([id], fetchDetails);
 
   if (status === "success") console.log(data);
 
@@ -74,26 +58,26 @@ const Info = () => {
         <Box m={5}>
           <Container maxWidth="md">
             <Card className={classes.paper}>
-              <Typography variant="h3">{data[0].name}</Typography>
-              <Typography variant="h6">{data[0].latin_name}</Typography>
+              <Typography variant="h3">{data.name}</Typography>
+              <Typography variant="h6">{data.latin_name}</Typography>
               <CardMedia
                 className={classes.image}
                 component="img"
-                alt={data[0].name}
-                image={"http://127.0.0.1:8000" + data[0].photo}
+                alt={data.name}
+                image={"http://127.0.0.1:8000" + data.photo}
                 opacity="0.5"
-                title={data[0].name}
+                title={data.name}
               ></CardMedia>
               <Typography>
-                {data[0].application}
+                {data.application}
                 <br />
-                {data[0].type}
+                {data.type}
                 <br />
-                {data[0].taste}
+                {data.taste}
                 <br />
-                {data[0].smell}
+                {data.smell}
               </Typography>
-              <Typography>{data[0].introduction}</Typography>
+              <Typography>{data.introduction}</Typography>
               <Accordion>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -104,15 +88,15 @@ const Info = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    {data[0].rim_hat}
+                    {data.rim_hat}
                     <br />
-                    {data[0].color_hat}
+                    {data.color_hat}
                     <br />
-                    {data[0].shape_hat}
+                    {data.shape_hat}
                     <br />
-                    {data[0].area_hat}
+                    {data.area_hat}
                     <br />
-                    {data[0].description_fruitcake}
+                    {data.description_fruitcake}
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -122,17 +106,17 @@ const Info = () => {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
                 >
-                  <Typography className={classes.heading}>Miąsz</Typography>
+                  <Typography className={classes.heading}>Miąższ</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    {data[0].color_pulp}
+                    {data.color_pulp}
                     <br />
-                    {data[0].milk}
+                    {data.milk}
                     <br />
-                    {data[0].details_type}
+                    {data.details_type}
                     <br />
-                    {data[0].description_pulp}
+                    {data.description_pulp}
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -146,17 +130,17 @@ const Info = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    {data[0].type_shaft}
+                    {data.type_shaft}
                     <br />
-                    {data[0].color_shaft}
+                    {data.color_shaft}
                     <br />
-                    {data[0].shape_shaft}
+                    {data.shape_shaft}
                     <br />
-                    {data[0].area_shaft}
+                    {data.area_shaft}
                     <br />
-                    {data[0].section_shaft}
+                    {data.section_shaft}
                     <br />
-                    {data[0].description_shaft}
+                    {data.description_shaft}
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -172,13 +156,13 @@ const Info = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    {data[0].incidence_time}
+                    {data.incidence_time}
                     <br />
-                    {data[0].season}
+                    {data.season}
                     <br />
-                    {data[0].habitat}
+                    {data.habitat}
                     <br />
-                    {data[0].existence}
+                    {data.existence}
                   </Typography>
                 </AccordionDetails>
               </Accordion>

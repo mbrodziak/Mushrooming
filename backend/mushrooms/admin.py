@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Mushroom, Borowik, Mleczaj, Maslak, Muchomor, Podgrzybek
+
+from .models import Mushroom
 
 
 # Register your models here.
@@ -9,28 +10,6 @@ from .models import Mushroom, Borowik, Mleczaj, Maslak, Muchomor, Podgrzybek
 
 @admin.register(Mushroom)
 class MushroomAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
+    list_display = ['name', 'category', 'application']
 
 
-@admin.register(Borowik)
-class BorowikAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
-
-
-@admin.register(Mleczaj)
-class MleczajAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
-
-
-@admin.register(Maslak)
-class MaslakAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
-
-
-@admin.register(Muchomor)
-class MuchomorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
-
-@admin.register(Podgrzybek)
-class PodgrzybekAdmin(admin.ModelAdmin):
-    list_display = ['name', 'application']
