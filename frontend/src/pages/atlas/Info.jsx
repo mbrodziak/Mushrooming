@@ -11,10 +11,12 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Button from "@material-ui/core/Button";
+import { useNavigate } from "react-router-dom";
 
 const fetchDetails = async (id) => {
-   const res = await fetch(`http://127.0.0.1:8000/mushrooms/${id}/`);
-   return res.json();
+  const res = await fetch(`http://127.0.0.1:8000/mushrooms/${id}/`);
+  return res.json();
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -27,23 +29,54 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     height: "80%",
   },
+  cont: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: "white",
+    background: "rgba(41, 40, 38, 0.5)",
+    margin: "0 auto",
+  },
+  acc: {
+    padding: theme.spacing(0),
+    textAlign: "center",
+    color: "white",
+    background: "rgba(41, 40, 38, 0.5)",
+    margin: "0 auto",
+  },
   image: {
     opacity: "0.7",
     height: "100%",
     width: "100%",
     borderRadius: "3px",
+    marginTop: "1rem",
+    marginBottom: "1rem",
   },
   root: {
     width: "100%",
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(17),
     fontWeight: theme.typography.fontWeightRegular,
+    textAlign: "center",
+    margin: "0 auto",
+  },
+  table: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: "white",
+    margin: "0 auto",
+    marginTop: "1rem",
+    marginBottom: "1rem",
+  },
+  row: {
+    background: "rgba(41, 40, 38, 0.5)",
+    margin: ".3rem",
   },
 }));
 
 const Info = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   let { id } = useParams();
 
@@ -58,7 +91,9 @@ const Info = () => {
         <Box m={5}>
           <Container maxWidth="md">
             <Card className={classes.paper}>
-              <Typography variant="h3">{data.name}</Typography>
+              <Typography variant="h4" color="secondary">
+                {data.name}
+              </Typography>
               <Typography variant="h6">{data.latin_name}</Typography>
               <CardMedia
                 className={classes.image}
@@ -68,17 +103,48 @@ const Info = () => {
                 opacity="0.5"
                 title={data.name}
               ></CardMedia>
-              <Typography>
-                {data.application}
-                <br />
-                {data.type}
-                <br />
-                {data.taste}
-                <br />
-                {data.smell}
+              <Typography className={classes.cont}>
+                {data.introduction}
               </Typography>
-              <Typography>{data.introduction}</Typography>
-              <Accordion>
+              <Box className={classes.table}>
+                <Box
+                  className={classes.row}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                >
+                  <Box p={1}>Rodzaj:</Box>
+                  <Box p={1}>{data.application}</Box>
+                </Box>
+                <Box
+                  className={classes.row}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                >
+                  <Box p={1}>Typ:</Box>
+                  <Box p={1}>{data.type}</Box>
+                </Box>
+                <Box
+                  className={classes.row}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                >
+                  <Box p={1}>Zapach:</Box>
+                  <Box p={1}>{data.smell}</Box>
+                </Box>
+                <Box
+                  className={classes.row}
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                >
+                  <Box p={1}>Smak:</Box>
+                  <Box p={1}>{data.taste}</Box>
+                </Box>
+              </Box>
+              <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -87,20 +153,10 @@ const Info = () => {
                   <Typography className={classes.heading}>Kapelusz</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {data.rim_hat}
-                    <br />
-                    {data.color_hat}
-                    <br />
-                    {data.shape_hat}
-                    <br />
-                    {data.area_hat}
-                    <br />
-                    {data.description_fruitcake}
-                  </Typography>
+                  <Typography>{data.description_fruitcake}</Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion>
+              <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel2a-content"
@@ -109,18 +165,10 @@ const Info = () => {
                   <Typography className={classes.heading}>Miąższ</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {data.color_pulp}
-                    <br />
-                    {data.milk}
-                    <br />
-                    {data.details_type}
-                    <br />
-                    {data.description_pulp}
-                  </Typography>
+                  <Typography>{data.description_pulp}</Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion>
+              <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel3a-content"
@@ -129,22 +177,10 @@ const Info = () => {
                   <Typography className={classes.heading}>Trzon</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {data.type_shaft}
-                    <br />
-                    {data.color_shaft}
-                    <br />
-                    {data.shape_shaft}
-                    <br />
-                    {data.area_shaft}
-                    <br />
-                    {data.section_shaft}
-                    <br />
-                    {data.description_shaft}
-                  </Typography>
+                  <Typography>{data.description_shaft}</Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion>
+              <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel4a-content"
@@ -155,19 +191,22 @@ const Info = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>
-                    {data.incidence_time}
-                    <br />
-                    {data.season}
-                    <br />
-                    {data.habitat}
-                    <br />
-                    {data.existence}
-                  </Typography>
+                  <Typography>{data.existence}</Typography>
                 </AccordionDetails>
               </Accordion>
             </Card>
           </Container>
+          <Box display="flex" alignItems="center" justifyContent="center" m={2}>
+            <Button
+              variant="contained"
+              color="inherit"
+              component="span"
+              size="small"
+              onClick={() => navigate('..')}
+            >
+              Powrót
+            </Button>
+          </Box>
         </Box>
       )}
     </div>

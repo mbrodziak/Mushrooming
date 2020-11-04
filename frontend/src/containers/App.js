@@ -16,7 +16,7 @@
       <Router>
         <Header/>
         <Routes>
-          <Route exact path="/" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
           <Route path="atlas" element={<Atlas/>} />
             <Route path="atlas/:slug" element={<Mushrooms />} />
               <Route path="atlas/:slug/:id" element={<Info />} />
