@@ -7,6 +7,7 @@
   import Identify from "../pages/Identify";
   import Info from "../pages/atlas/Info";
   import Mushrooms from "../pages/atlas/Mushrooms"
+   import Sources from "../pages/Sources"
 
   import './App.css';
   import 'fontsource-roboto';
@@ -22,6 +23,7 @@
               <Route path="atlas/:slug/:id" element={<Info />} />
           <Route path="identyfikacja" element={<Identify/>} />
           <Route path="mapa" element={<Map/>} />
+          <Route path="zrodla" element={<Sources/>} />
         </Routes>
       </Router>
     );
