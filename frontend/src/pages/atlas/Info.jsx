@@ -162,6 +162,18 @@ const Info = () => {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
                 >
+                    <Typography className={classes.heading}>{data.type.charAt(0).toUpperCase() + data.type.slice(1)}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>{data.details_type}</Typography>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion className={classes.acc}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel3a-content"
+                  id="panel3a-header"
+                >
                   <Typography className={classes.heading}>Miąższ</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -171,8 +183,8 @@ const Info = () => {
               <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel3a-content"
-                  id="panel3a-header"
+                  aria-controls="panel4a-content"
+                  id="panel4a-header"
                 >
                   <Typography className={classes.heading}>Trzon</Typography>
                 </AccordionSummary>
@@ -183,8 +195,8 @@ const Info = () => {
               <Accordion className={classes.acc}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel4a-content"
-                  id="panel4a-header"
+                  aria-controls="panel5a-content"
+                  id="panel5a-header"
                 >
                   <Typography className={classes.heading}>
                     Występowanie
