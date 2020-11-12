@@ -31,10 +31,9 @@ const Home = () => {
         <Grid item xs={8} bgcolor="blue">
           <Box color="white">
             <Typography className={classes.text} variant="body1" align="center">
-              Mushrooming to nowoczesny internetowy atlas grzybów wykorzystujący
-              sztuczną inteligencję. Umożliwia on przeglądanie i wyszukiwanie
-              rozmaitych gatunków grzybów oraz ich identyfikajcę z przesyłanych
-              zdjęć.
+              Mushrooming to nowoczesny internetowy atlas grzybów. Umożliwia on przeglądanie rozmaitych gatunków
+              grzybów. W przyszłości możliwe będzie również wyszukiwanie grzybów oraz ich identyfikację
+              z przesyłanych zdjęć za pomocą sztucznej inteligencji.
             </Typography>
           </Box>
         </Grid>
