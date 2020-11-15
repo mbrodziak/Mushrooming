@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "white",
     background: "rgba(41, 40, 38, 0.5)",
-    margin: "0 auto",
-    width: "80%",
-    height: "80%",
+    margin: "0 auto"
   },
   cont: {
     padding: theme.spacing(2),
@@ -50,9 +48,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "3px",
     marginTop: "1rem",
     marginBottom: "1rem",
-  },
-  root: {
-    width: "100%",
   },
   heading: {
     fontSize: theme.typography.pxToRem(17),
@@ -89,7 +84,7 @@ const Info = () => {
       {status === "error" && <p>Błąd pobierania danych z bazy!</p>}
       {status === "success" && (
         <Box m={5}>
-          <Container maxWidth="md">
+          <Container maxWidth="md" >
             <Card className={classes.paper}>
               <Typography variant="h4" color="secondary">
                 {data.name}
