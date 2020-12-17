@@ -5,9 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   text: {
-    fontSize: "1.0rem",
-    "@media (min-width:600px)": { fontSize: "1.3rem" },
-    [theme.breakpoints.up("md")]: { fontSize: "1.5rem" },
+    fontSize: "0.9rem",
+    "@media (min-width:600px)": { fontSize: "1.1rem" },
+    [theme.breakpoints.up("md")]: { fontSize: "1.3rem" },
     fontStyle: "oblique",
   },
 }));
@@ -19,12 +19,11 @@ const Sources = () => {
       <Box
       display="flex"
       color="white"
-      align="bottom"
       justifyContent="center"
       alignItems="center"
-      height="100vh"
+      height="80vh"
       >
-        <Typography className={classes.text} variant="caption" >
+        <Typography className={classes.text} variant="caption" bgcolor="red">
             Wszelkie opisy oraz zdjęcia, znajdujące się na poszczególnych podstronach zostały wykorzystane z następujących źródeł:
             <br />
             <br />
@@ -35,7 +34,6 @@ const Sources = () => {
             <a href="https://kaggle.com/maysee/mushrooms-classification-common-genuss-images" style={{color: 'inherit', textDecoration: 'inherit'}}>
                 kaggle.com/maysee/mushrooms-classification-common-genuss-images</a>
         </Typography>
-
       </Box>
     </>
   );
