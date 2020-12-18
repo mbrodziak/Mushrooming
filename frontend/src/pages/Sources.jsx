@@ -22,6 +22,8 @@ const Sources = () => {
       justifyContent="center"
       alignItems="center"
       height="80vh"
+      marginRight="10%"
+      marginLeft="10%"
       >
         <Typography className={classes.text} variant="caption" bgcolor="red">
             Wszelkie opisy oraz zdjęcia, znajdujące się na poszczególnych podstronach zostały wykorzystane z następujących źródeł:

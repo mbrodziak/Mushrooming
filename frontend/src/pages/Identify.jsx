@@ -19,10 +19,13 @@ const Identify = () => {
       color="white"
       display="flex"
       flexDirection="column"
-      alignContent="space-around"
-      alignItems="space-around"
-      justifyContent="space-around"
+      alignContent="center"
+      alignItems="center"
+      justifyContent="center"
       height="80vh"
+      marginRight="10%"
+      marginLeft="10%"
+
     >
       <Typography className={classes.text} variant="body1" align="center">
         Funkcjonalność identyfikacji grzybów pojawi się w przyszłości.

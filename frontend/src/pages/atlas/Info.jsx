@@ -13,6 +13,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const fetchDetails = async (id) => {
   const res = await fetch(`http://127.0.0.1:8000/mushrooms/${id}/`);
@@ -25,21 +26,23 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "white",
     background: "rgba(41, 40, 38, 0.5)",
-    margin: "0 auto"
+    margin: "2rem auto"
   },
   cont: {
     padding: theme.spacing(2),
     textAlign: "center",
     color: "white",
     background: "rgba(41, 40, 38, 0.5)",
-    margin: "0 auto",
+    fontSize: "calc(18px + (22 - 18) * ((100vw - 200px) / (1920 - 200)))",
   },
   acc: {
     padding: theme.spacing(0),
     textAlign: "center",
     color: "white",
     background: "rgba(41, 40, 38, 0.5)",
-    margin: "0 auto",
+  },
+  description: {
+    fontSize: "calc(14px + (20 - 14) * ((100vw - 200px) / (1920 - 200)))",
   },
   image: {
     opacity: "0.7",
@@ -50,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
   },
   heading: {
-    fontSize: theme.typography.pxToRem(17),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: "calc(16px + (22 - 16) * ((100vw - 200px) / (1920 - 200)))",
+    fontWeight: "bold",
     textAlign: "center",
     margin: "0 auto",
   },
@@ -59,14 +62,25 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: "white",
-    margin: "0 auto",
     marginTop: "1rem",
     marginBottom: "1rem",
   },
   row: {
+    display:"flex",
+    flexDirection:"row",
+    justifyContent:"center",
+    alignItems: "center",
     background: "rgba(41, 40, 38, 0.5)",
     margin: ".3rem",
+    fontSize: "calc(14px + (20 - 14) * ((100vw - 200px) / (1920 - 200)))",
+    ['@media (max-width:400px)']: { // eslint-disable-line no-useless-computed-key
+      display: "flex",
+      flexDirection: "column",
+    }
   },
+  firstRow: {
+    fontWeight: "bold",
+  }
 }));
 
 const Info = () => {
@@ -83,7 +97,7 @@ const Info = () => {
     <div>
       {status === "error" && <p>Błąd pobierania danych z bazy!</p>}
       {status === "success" && (
-        <Box m={5}>
+        <Box>
           <Container maxWidth="md" >
             <Card className={classes.paper}>
               <Typography variant="h4" color="secondary">
@@ -95,7 +109,6 @@ const Info = () => {
                 component="img"
                 alt={data.name}
                 image={"http://127.0.0.1:8000" + data.photo}
-                opacity="0.5"
                 title={data.name}
               ></CardMedia>
               <Typography className={classes.cont}>
@@ -104,38 +117,26 @@ const Info = () => {
               <Box className={classes.table}>
                 <Box
                   className={classes.row}
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="center"
                 >
-                  <Box p={1}>Rodzaj:</Box>
+                  <Box className={classes.firstRow} p={1}>Rodzaj:</Box>
                   <Box p={1}>{data.application}</Box>
                 </Box>
                 <Box
                   className={classes.row}
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="center"
                 >
-                  <Box p={1}>Typ:</Box>
+                  <Box className={classes.firstRow} p={1}>Typ:</Box>
                   <Box p={1}>{data.type}</Box>
                 </Box>
                 <Box
                   className={classes.row}
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="center"
                 >
-                  <Box p={1}>Zapach:</Box>
+                  <Box className={classes.firstRow} p={1}>Zapach:</Box>
                   <Box p={1}>{data.smell}</Box>
                 </Box>
                 <Box
                   className={classes.row}
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="center"
                 >
-                  <Box p={1}>Smak:</Box>
+                  <Box className={classes.firstRow} p={1}>Smak:</Box>
                   <Box p={1}>{data.taste}</Box>
                 </Box>
               </Box>
@@ -148,7 +149,7 @@ const Info = () => {
                   <Typography className={classes.heading}>Kapelusz</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{data.description_fruitcake}</Typography>
+                  <Typography className={classes.description}>{data.description_fruitcake}</Typography>
                 </AccordionDetails>
               </Accordion>
               <Accordion className={classes.acc}>
@@ -160,7 +161,7 @@ const Info = () => {
                     <Typography className={classes.heading}>{data.type.charAt(0).toUpperCase() + data.type.slice(1)}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{data.details_type}</Typography>
+                  <Typography className={classes.description}>{data.details_type}</Typography>
                 </AccordionDetails>
               </Accordion>
               <Accordion className={classes.acc}>
@@ -172,7 +173,7 @@ const Info = () => {
                   <Typography className={classes.heading}>Miąższ</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{data.description_pulp}</Typography>
+                  <Typography className={classes.description}>{data.description_pulp}</Typography>
                 </AccordionDetails>
               </Accordion>
               <Accordion className={classes.acc}>
@@ -184,7 +185,7 @@ const Info = () => {
                   <Typography className={classes.heading}>Trzon</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{data.description_shaft}</Typography>
+                  <Typography className={classes.description}>{data.description_shaft}</Typography>
                 </AccordionDetails>
               </Accordion>
               <Accordion className={classes.acc}>
@@ -198,7 +199,7 @@ const Info = () => {
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography>{data.existence}</Typography>
+                  <Typography className={classes.description}>{data.existence}</Typography>
                 </AccordionDetails>
               </Accordion>
             </Card>
