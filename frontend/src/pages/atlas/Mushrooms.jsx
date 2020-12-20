@@ -32,8 +32,8 @@ const fetchMushrooms = async (loc) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginLeft: "2rem",
-    marginRight: "2rem",
+    marginLeft: "1rem",
+    marginRight: "1rem",
     marginTop: "3rem",
   }
 }));
